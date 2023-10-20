@@ -7,5 +7,6 @@ public class Main {
 
         if (args.length != 3) throw new IllegalArgumentException("Please enter three arguments");
 
+
     }
 }
