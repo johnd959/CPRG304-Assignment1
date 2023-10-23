@@ -17,7 +17,7 @@ public class Main {
 
         Object[] shapesArr;
 
-        sort(params.get("sortAlgorithm", shapesArr));
+        //sort(params.get("sortAlgorithm", shapesArr));
 
     }
 
