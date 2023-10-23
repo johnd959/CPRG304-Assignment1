@@ -1,11 +1,11 @@
 package org.example;
 
-public abstract class shape implements Comparable {
+public abstract class Shape implements Comparable {
 
     public int height;
 
     @Override
     public int compareTo(Object o) {
-        return height - ((shape) o).height;
+        return height - ((Shape) o).height;
     }
 }
