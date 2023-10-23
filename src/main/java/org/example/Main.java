@@ -1,6 +1,8 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -16,6 +18,14 @@ public class Main {
         if (params.size() != 3) throw new IllegalArgumentException("Please enter three valid arguments");
 
         Object[] shapesArr;
+
+        Enumeration<String> e = params.keys();
+        System.out.println(Arrays.toString(args));
+        while(e.hasMoreElements())
+        {
+            String key = e.nextElement();
+            System.out.println(params.get(key));
+        }
 
         //sort(params.get("sortAlgorithm", shapesArr));
 
@@ -36,7 +46,7 @@ public class Main {
 
         for(int i = 0; i < args.length; i++)
         {
-            String content = args[i].substring(3, args[i].length());
+            String content = args[i].substring(2, args[i].length());
             if(args[i].substring(0, 2).contains("-t")) {
                 arguments.put("sortQuality", content);
             }
