@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Sorter {
 
-    public void BubbleSort(shape[] shapes, Comparator heightComparator)
+    public void BubbleSort(Shape[] shapes, Comparator heightComparator)
     {
 
     }
