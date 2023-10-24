@@ -17,7 +17,9 @@ public class Main {
         Dictionary<String, String> params = validateArgs(args);
         if (params.size() != 3) throw new IllegalArgumentException("Please enter three valid arguments");
 
-        Object[] shapesArr;
+        //getting shapes from file
+        FileReader fileReader = new FileReader("temp.txt");
+        Shape[] shapesArr = fileReader.getContent();
 
         Enumeration<String> e = params.keys();
         System.out.println(Arrays.toString(args));
