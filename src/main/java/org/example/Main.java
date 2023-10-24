@@ -17,10 +17,6 @@ public class Main {
         Dictionary<String, String> params = validateArgs(args);
         if (params.size() != 3) throw new IllegalArgumentException("Please enter three valid arguments");
 
-        //getting shapes from file
-        FileReader fileReader = new FileReader("temp.txt");
-        Shape[] shapesArr = fileReader.getContent();
-
         Enumeration<String> e = params.keys();
         System.out.println(Arrays.toString(args));
         while(e.hasMoreElements())
@@ -28,6 +24,10 @@ public class Main {
             String key = e.nextElement();
             System.out.println(params.get(key));
         }
+
+        //getting shapes from file
+        FileReader fileReader = new FileReader(params.get("filePath"));
+        Shape[] shapesArr = fileReader.getContent();
 
         //sort(params.get("sortAlgorithm", shapesArr));
 
