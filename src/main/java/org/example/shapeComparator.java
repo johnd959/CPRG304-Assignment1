@@ -5,6 +5,10 @@ import java.util.Comparator;
 public class shapeComparator implements Comparator<Shape>{
     private char compareType;
 
+    public char getCompareType() {
+        return compareType;
+    }
+
     public shapeComparator(char compareType) {
         this.compareType = compareType;
     }
