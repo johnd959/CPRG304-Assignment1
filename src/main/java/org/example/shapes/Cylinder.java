@@ -1,6 +1,6 @@
-package org.example;
+package org.example.shapes;
 
-public class Cylinder extends Shape{
+public class Cylinder extends Shape {
     private double height;
     private double radius;
 

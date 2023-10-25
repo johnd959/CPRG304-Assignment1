@@ -1,4 +1,4 @@
-package org.example;
+package org.example.shapes;
 
 import java.util.Comparator;
 

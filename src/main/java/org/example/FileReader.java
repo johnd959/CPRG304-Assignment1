@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.shapes.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
