@@ -29,8 +29,12 @@ public class Main {
         //getting the shape comparator
         shapeComparator comparator = new shapeComparator(params.get("sortQuality").toCharArray()[0]);
 
+        //getting sysTime before sorting
+        double startTime = System.currentTimeMillis();
         //invoking the utility methods and sorting
         sort(params.get("sortAlgorithm"), shapesArr, comparator);
+        double endTime = System.currentTimeMillis();
+        System.out.println("Sort duration: " + (endTime - startTime));
 
         String selectedSortQuality = "getHeight";
         switch(params.get("sortQuality"))
@@ -56,11 +60,11 @@ public class Main {
 
         for(int i = 0; i < shapesArr.length; i++)
         {
-            Method m = shapesArr.getClass().getMethod(selectedSortQuality);
+            /*Method m = shapesArr.getClass().getMethod(selectedSortQuality);*/
 
             if (i % 1000 == 0)
             {
-                System.out.println(m.invoke(),i);
+                System.out.println(shapesArr[i].calculateVolume());
             }
         }
 
