@@ -1,11 +1,12 @@
 package org.example;
 
+import java.lang.reflect.Method;
 import java.util.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchMethodException {
 
         // initial argument length validation
         if (args.length != 3) throw new IllegalArgumentException("Please enter three arguments");
@@ -28,12 +29,41 @@ public class Main {
         //getting the shape comparator
         shapeComparator comparator = new shapeComparator(params.get("sortQuality").toCharArray()[0]);
 
+        //invoking the utility methods and sorting
         sort(params.get("sortAlgorithm"), shapesArr, comparator);
 
-        for(Shape shape : shapesArr)
+        String selectedSortQuality = "getHeight";
+        switch(params.get("sortQuality"))
         {
-            System.out.println(shape.getHeight());
+            case "h":
+            {
+                selectedSortQuality = "getHeight";
+                break;
+            }
+            case "a":
+            {
+                selectedSortQuality = "calculateBaseArea";
+                break;
+            }
+            case "v":
+            {
+                selectedSortQuality = "calculateVolume";
+                break;
+            }
+
         }
+
+
+        for(int i = 0; i < shapesArr.length; i++)
+        {
+            Method m = shapesArr.getClass().getMethod(selectedSortQuality);
+
+            if (i % 1000 == 0)
+            {
+                System.out.println(m.invoke(),i);
+            }
+        }
+
 
     }
 
@@ -119,7 +149,7 @@ public class Main {
             case "z":
             {
                 //algorithm tbd sort
-                sorter.BucketSort(arr, 10, ((shapeComparator) comparator).getCompareType());
+                sorter.HeapSort(arr);
                 break;
             }
         }
