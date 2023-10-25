@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -18,7 +15,6 @@ public class Main {
         if (params.size() != 3) throw new IllegalArgumentException("Please enter three valid arguments");
 
         Enumeration<String> e = params.keys();
-        System.out.println(Arrays.toString(args));
         while(e.hasMoreElements())
         {
             String key = e.nextElement();
@@ -29,7 +25,15 @@ public class Main {
         FileReader fileReader = new FileReader(params.get("filePath"));
         Shape[] shapesArr = fileReader.getContent();
 
-        //sort(params.get("sortAlgorithm", shapesArr));
+        //getting the shape comparator
+        shapeComparator comparator = new shapeComparator(params.get("sortQuality").toCharArray()[0]);
+
+        sort(params.get("sortAlgorithm"), shapesArr, comparator);
+
+        for(Shape shape : shapesArr)
+        {
+            System.out.println(shape.getHeight());
+        }
 
     }
 
@@ -74,39 +78,48 @@ public class Main {
      *
      * Takes in a string to select the sorting algorithm that will be applied on array arr.
      */
-    public static void sort(String algorithm, Object[] arr)
+    public static void sort(String algorithm, Object[] arr, Comparator comparator)
     {
+        //instantiating sorter
+        Sorter sorter = new Sorter(comparator);
+
         //selecting the right sorting algorithm
         switch(algorithm)
         {
             case "b":
             {
                 //bubble sort
+                sorter.Bubblesort(arr);
                 break;
             }
             case "s":
             {
                 //selection sort
+                sorter.SelectionSort(arr);
                 break;
             }
             case "i":
             {
                 //insertion sort
+                sorter.InsertionSort(arr);
                 break;
             }
             case "m":
             {
                 //merge sort
+                sorter.MergeSort(arr);
                 break;
             }
             case "q":
             {
                 //quick sort
+                sorter.Quicksort(arr, 0, arr.length - 1);
                 break;
             }
             case "z":
             {
                 //algorithm tbd sort
+                sorter.BucketSort(arr, 10, ((shapeComparator) comparator).getCompareType());
                 break;
             }
         }
