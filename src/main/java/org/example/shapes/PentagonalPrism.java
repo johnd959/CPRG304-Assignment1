@@ -1,4 +1,4 @@
-package org.example;
+package org.example.shapes;
 
 public class PentagonalPrism extends Shape{
     private double height;

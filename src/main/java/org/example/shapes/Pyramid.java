@@ -1,17 +1,17 @@
-package org.example;
+package org.example.shapes;
 
-public class SquarePrism extends Shape{
+public class Pyramid  extends Shape{
     private double height;
     private double edgeLength;
 
-    public SquarePrism(double height, double edgeLength) {
+    public Pyramid(double height, double edgeLength){
         this.height = height;
         this.edgeLength = edgeLength;
     }
 
     @Override
     public double calculateVolume(){
-        return height * edgeLength * edgeLength;
+        return (1.0/3.0) * height * edgeLength * edgeLength;
     }
 
     @Override

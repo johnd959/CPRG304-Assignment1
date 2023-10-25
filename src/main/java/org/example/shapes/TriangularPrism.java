@@ -1,4 +1,4 @@
-package org.example;
+package org.example.shapes;
 
 public class TriangularPrism extends Shape{
     private double height;

@@ -1,6 +1,8 @@
 package org.example;
 
-import java.lang.reflect.Method;
+import org.example.shapes.Shape;
+import org.example.shapes.shapeComparator;
+
 import java.util.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
