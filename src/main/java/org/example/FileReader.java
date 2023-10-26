@@ -40,7 +40,7 @@ public class FileReader {
             return fileContent;
         }
         catch (FileNotFoundException e){
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "\n Please use the option -f followed immediately by the file path (-fexample)");
             return new Shape[0];
         }
     }
