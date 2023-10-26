@@ -103,15 +103,15 @@ public class Main {
 
         for(int i = 0; i < args.length; i++)
         {
-            String content = args[i].substring(2, args[i].length());
-            if(args[i].substring(0, 2).contains("-t")) {
+            String content = args[i].substring(2, args[i].length()).toLowerCase();
+            if(args[i].substring(0, 2).toLowerCase().contains("-t")) {
                 arguments.put("sortQuality", content);
             }
-            else if(args[i].substring(0,2).contains("-s"))
+            else if(args[i].substring(0,2).toLowerCase().contains("-s"))
             {
                 arguments.put("sortAlgorithm", content);
             }
-            else if(args[i].substring(0,2).contains("-f"))
+            else if(args[i].substring(0,2).toLowerCase().contains("-f"))
             {
                 arguments.put("filePath", content);
             }
