@@ -1,5 +1,6 @@
 package org.example.shapes;
 
+//Cone class extending the Shape class
 public class Cone extends Shape {
     private double height;
     private double radius;

@@ -1,5 +1,6 @@
 package org.example.shapes;
 
+//SquarePrism class extending the Shape class
 public class SquarePrism extends Shape{
     private double height;
     private double edgeLength;
