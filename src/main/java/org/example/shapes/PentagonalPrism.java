@@ -1,5 +1,6 @@
 package org.example.shapes;
 
+//PentagonalPrism class extending the Shape class
 public class PentagonalPrism extends Shape{
     private double height;
     private double edgeLength;
