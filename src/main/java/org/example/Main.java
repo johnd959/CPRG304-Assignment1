@@ -1,14 +1,16 @@
 package org.example;
 
 import org.example.shapes.Shape;
-import org.example.shapes.shapeComparator;
+import org.example.shapes.ShapeComparator;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         // initial argument length validation
         if (args.length != 3) throw new IllegalArgumentException("Please enter three arguments");
@@ -21,7 +23,7 @@ public class Main {
         while(e.hasMoreElements())
         {
             String key = e.nextElement();
-            System.out.println(params.get(key));
+            System.out.println(key + ": " + params.get(key));
         }
 
         //getting shapes from file
@@ -29,16 +31,30 @@ public class Main {
         Shape[] shapesArr = fileReader.getContent();
 
         //getting the shape comparator
-        shapeComparator comparator = new shapeComparator(params.get("sortQuality").toCharArray()[0]);
+        ShapeComparator comparator = new ShapeComparator(params.get("sortQuality").toCharArray()[0]);
+
 
         //getting sysTime before sorting
         double startTime = System.currentTimeMillis();
-        //invoking the utility methods and sorting
-        sort(params.get("sortAlgorithm"), shapesArr, comparator);
-        double endTime = System.currentTimeMillis();
-        System.out.println("Sort duration: " + (endTime - startTime));
 
-        String selectedSortQuality = "getHeight";
+        try
+        {
+            //invoking the utility methods and sorting
+            Sort(params.get("sortAlgorithm"), shapesArr, comparator);
+        }
+        catch (IllegalArgumentException exception)
+        {
+            System.out.println(exception.getMessage());
+            return;
+        }
+
+        //getting the sysTime after sorting
+        double endTime = System.currentTimeMillis();
+
+        System.out.println("Sort duration: " + (endTime - startTime) + "ms");
+
+
+        String selectedSortQuality = null;
         switch(params.get("sortQuality"))
         {
             case "h":
@@ -59,14 +75,13 @@ public class Main {
 
         }
 
-
         for(int i = 0; i < shapesArr.length; i++)
         {
-            /*Method m = shapesArr.getClass().getMethod(selectedSortQuality);*/
+            Method m = shapesArr[i].getClass().getMethod(selectedSortQuality);
 
             if (i % 1000 == 0)
             {
-                System.out.println(shapesArr[i].calculateVolume());
+                System.out.println(i + ": " + m.invoke(shapesArr[i]));
             }
         }
 
@@ -114,7 +129,7 @@ public class Main {
      *
      * Takes in a string to select the sorting algorithm that will be applied on array arr.
      */
-    public static void sort(String algorithm, Object[] arr, Comparator comparator)
+    public static void Sort(String algorithm, Object[] arr, Comparator comparator)
     {
         //instantiating sorter
         Sorter sorter = new Sorter(comparator);
@@ -157,6 +172,16 @@ public class Main {
                 //algorithm tbd sort
                 sorter.HeapSort(arr);
                 break;
+            }
+            default:
+            {
+                throw new IllegalArgumentException("Please choose a valid sorting algorithm\n" +
+                        "Use option -sb for bubble sort\n" +
+                        "Use option -si for insertion sort\n" +
+                        "Use option -ss for selection sort\n" +
+                        "Use option -sm for merge sort\n" +
+                        "Use option -sq for quick sort\n" +
+                        "Use option -sz for heap sort\n");
             }
         }
     }
