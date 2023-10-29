@@ -1,0 +1,36 @@
+
+Heap Sort: When creating the max heap, the heapSort method continuously pulls the highest element from the heap and put it to the end of the array. Overall time complexity is O(NlogN),
+Procedure HeapSort(arr)
+    n = length(arr)  1 assignment
+    The first loop builds a max heap from the array.
+    for i = n / 2 - 1 to 0 do    n+1 assignment, n+1 comparsion n arithmetic
+        heapify(arr, n, i)       n operation
+    end for
+    swap element and reduce size of the heap
+    for i = n - 1 to 1 do         n+1 assignment, n+1 comparsion n arithmetic
+        swap arr[0] with arr[i]   n assignment + 2n operation
+        heapify(arr, i, 0)
+    end for
+end procedure
+number of operations: 2n+3 assignment 2n+2 comparsion 2n arithmetic 
+f(n)= N
+
+Procedure heapify(arr, n, i)
+    largest = i     1 assignment    
+    left = 2 * i + 1   1 assignment
+    right = 2 * i + 2   1 assignment
+
+    if left < n and arr[left] > arr[largest] then   comparsion +assignment
+        largest = left
+    end if
+
+    if right < n and arr[right] > arr[largest] then  comparsion +assignment
+        largest = right
+    end if
+
+    if largest != i then     n comparsion             							
+        swap arr[i] with arr[largest] n assignment + 2n operation
+        heapify(arr, n, largest)
+    end if
+end procedure
+number of operation: The second loop calls the heapify function and swaps elements. Heapify has a time complexity of O(log n), and since it’s called ‘n’ times in the loop, the overall time complexity for this part is O(n log n).

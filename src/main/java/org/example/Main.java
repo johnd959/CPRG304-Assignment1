@@ -92,7 +92,6 @@ public class Main {
      *
      * @param args
      * @return
-     * Dictionary<String, String>
      * Takes in the command line arguments provided at run time and extracts the run-time parameters
      * of the sorting program. The sorting algorithm, quality to sort by, and the path to file wherein
      * the shapes are stored are retrieved and returned as a Dictionary (Hashtable) of strings
@@ -103,15 +102,15 @@ public class Main {
 
         for(int i = 0; i < args.length; i++)
         {
-            String content = args[i].substring(2, args[i].length());
-            if(args[i].substring(0, 2).contains("-t")) {
+            String content = args[i].substring(2, args[i].length()).toLowerCase();
+            if(args[i].substring(0, 2).toLowerCase().contains("-t")) {
                 arguments.put("sortQuality", content);
             }
-            else if(args[i].substring(0,2).contains("-s"))
+            else if(args[i].substring(0,2).toLowerCase().contains("-s"))
             {
                 arguments.put("sortAlgorithm", content);
             }
-            else if(args[i].substring(0,2).contains("-f"))
+            else if(args[i].substring(0,2).toLowerCase().contains("-f"))
             {
                 arguments.put("filePath", content);
             }
