@@ -92,7 +92,6 @@ public class Main {
      *
      * @param args
      * @return
-     * Dictionary<String, String>
      * Takes in the command line arguments provided at run time and extracts the run-time parameters
      * of the sorting program. The sorting algorithm, quality to sort by, and the path to file wherein
      * the shapes are stored are retrieved and returned as a Dictionary (Hashtable) of strings
