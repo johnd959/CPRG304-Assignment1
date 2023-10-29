@@ -9,7 +9,7 @@ This file contains the instruction of installation and usage of the Sorting prog
 
 -- Make sure you have Java Runtime Environment (JRE) installed on your system. You can download it from Oracle's official website.
 
--- Download the 'sort.jar' file from the submission files.
+-- Download the 'Assignment1.jar' file from the submission files.
 
 
 
@@ -22,7 +22,7 @@ This file contains the instruction of installation and usage of the Sorting prog
 -- To run the program, open the command prompt and navigate to the directory where `sort.jar` is located.
 
 
--- Enter this command "java -jar sort.jar -f[file_path] -t[sorting_type] -s[sorting_algorithm]".
+-- Enter this command "java -jar Assignment1.jar -f[file_path] -t[sorting_type] -s[sorting_algorithm]".
 
 
 More detail about the given command:
@@ -42,9 +42,9 @@ More detail about the given command:
 
 ** Examples of Valid Inputs:
 
-- `java -jar sort.jar -f"polyfor1.txt" -tV -sB`
-- `java -jar sort.jar -tA -sQ -f"res\\polyfor3.txt"`
-- `java -jar sort.jar -tH -f"C:\\temp\\polyfor5.txt" -sB`
+- `java -jar Assignment1.jar -f"polyfor1.txt" -tV -sB`
+- `java -jar Assignment1.jar -tA -sQ -f"res\\polyfor3.txt"`
+- `java -jar Assignment1.jar -tH -f"C:\\temp\\polyfor5.txt" -sB`
 
 ## Notes:
 

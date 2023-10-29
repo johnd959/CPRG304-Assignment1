@@ -8,7 +8,7 @@ Procedure HeapSort(arr)
     end for
     swap element and reduce size of the heap
     for i = n - 1 to 1 do         n+1 assignment, n+1 comparsion n arithmetic
-        swap arr[0] with arr[i]   n operation
+        swap arr[0] with arr[i]   n assignment + 2n operation
         heapify(arr, i, 0)
     end for
 end procedure
@@ -29,7 +29,7 @@ Procedure heapify(arr, n, i)
     end if
 
     if largest != i then     n comparsion             							
-        swap arr[i] with arr[largest]  n operation
+        swap arr[i] with arr[largest] n assignment + 2n operation
         heapify(arr, n, largest)
     end if
 end procedure
